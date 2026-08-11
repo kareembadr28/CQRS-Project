@@ -48,7 +48,7 @@ Command Handler   Query Handler
              ▼
       In-Memory Data
 
-For **events**, the flow looks like:
+For events, the flow looks like:
 
 Command Handler
       │
