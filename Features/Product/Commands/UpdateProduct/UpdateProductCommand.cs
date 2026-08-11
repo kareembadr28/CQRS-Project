@@ -1,0 +1,7 @@
+﻿using CQRS_Project.Models;
+using MediatR;
+
+namespace CQRS_Project.Features.Product.Commands.UpdateProduct
+{
+  public record UpdateProductCommand(int Id, string Name) : IRequest<product>;
+}
