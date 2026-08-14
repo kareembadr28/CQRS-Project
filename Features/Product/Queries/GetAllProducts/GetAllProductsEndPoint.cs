@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using CQRS_Project.Result;
+using MediatR;
 
 namespace CQRS_Project.Features.Product.Queries.GetAllProducts
 {
@@ -10,11 +11,8 @@ namespace CQRS_Project.Features.Product.Queries.GetAllProducts
             {
                 var query = new GetAllProductsQuery();
                 var result = await mediator.Send(query);
-                if (result == null)
-                {
-                    return Results.NotFound();
-                }
-                return Results.Ok(result);
+                return result.ToHttpResult();
+
             });
          
         }

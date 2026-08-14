@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using CQRS_Project.Result;
+using MediatR;
 
 namespace CQRS_Project.Features.Product.Commands.CreateProduct
 {
@@ -9,11 +10,7 @@ namespace CQRS_Project.Features.Product.Commands.CreateProduct
             app.MapPost("/api/products", async (CreateProductCommand command, IMediator mediator) =>
             {
                 var result = await mediator.Send(command);
-                if (result == null)
-                {
-                    return Results.BadRequest();
-                }
-                return Results.Created($"/api/products/{result.Id}", result);
+                return result.ToHttpResult();
             });
         }
     }

@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using CQRS_Project.Result;
+using MediatR;
 
 namespace CQRS_Project.Features.Product.Commands.DeleteProduct
 {
@@ -10,14 +11,7 @@ namespace CQRS_Project.Features.Product.Commands.DeleteProduct
             {
                 var command = new DeleteProductCommand(id);
                 var result = await mediator.Send(command);
-                if (result)
-                {
-                    return Results.Ok($"Product with Id {id} deleted successfully.");
-                }
-                else
-                {
-                    return Results.NotFound($"Product with Id {id} not found.");
-                }
+                return result.ToHttpResult();
             });
         }
     }

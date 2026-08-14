@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using CQRS_Project.Result;
+using MediatR;
 
 namespace CQRS_Project.Features.Product.Commands.UpdateProduct
 {
@@ -10,11 +11,7 @@ namespace CQRS_Project.Features.Product.Commands.UpdateProduct
             {
                 
                 var result = await mediator.Send(command);
-                if (result == null)
-                {
-                    return Results.NotFound();
-                }
-                return Results.Ok(result);
+                return result.ToHttpResult();
             });
         }
     }
