@@ -66,3 +66,20 @@ Event Handler
       │
       ▼
 Logging / Side Effects
+
+
+### 🎯 Result Pattern
+
+The project also uses the **Result Pattern** to handle operation outcomes explicitly, allowing success and failure results to be returned consistently without relying on exceptions for expected business cases.
+
+```text
+Command / Query Handler
+        │
+        ▼
+   Result<T>
+    ┌───┴────┐
+    ▼        ▼
+ Success   Failure
+    │        │
+    ▼        ▼
+ 200 OK   4xx Error
